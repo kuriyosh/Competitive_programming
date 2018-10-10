@@ -4,11 +4,12 @@
 
 ;; Author: torith
 ;; Keywords:
-(require 'autoinsert)
-(setq auto-insert-directory "template")
-(setq auto-insert-alist
-      (append '(("\\.cpp$" . ["comptemp.cpp"])) auto-insert-alist))
-(add-hook 'find-file-not-found-hooks 'auto-insert)
+;; TODO: これではだめ
+(auto-insert-mode . (
+					 (setq auto-insert-directory "./template/")
+					 (setq auto-insert-alist '(("\\.cpp$" . ["comptemp.cpp" my-template])))
+					 ))
 
 (provide 'dir-locals)
 ;;; dir-locals.el ends here
+
