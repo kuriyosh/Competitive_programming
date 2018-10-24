@@ -14,19 +14,19 @@ int main(){
     cin.tie(0);
     ios::sync_with_stdio(false);
     int N; cin >> N;
-    map<int,int> A;
+    int a[100000] = {};
     for (int i = 0; i < N; ++i) {
         int t;
         cin >> t;
-        A[t] = (A[t] + 1)%2;
+        a[t]++;
     }
 
     int ans = 0;
-    for (auto& a: A){
-        if (a.second == 1) ans ++;
+    for (int i = 0; i < 100000 - 2; ++i) {
+        ans = max(ans,a[i]+a[i+1]+a[i+2]);
     }
-
     cout << ans << "\n";
+
     return 0;
 }
 
