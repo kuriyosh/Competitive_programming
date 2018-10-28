@@ -45,6 +45,26 @@ int main(){
 
     cin.tie(0);
     ios::sync_with_stdio(false);
+    int N,M;
+    cin >> N >> M;
+    if(abs(N - M) > 1){
+        cout << 0 << "\n";
+        return 0;
+    }
+
+    int ans = 1;
+    for (int i = 0; i < N; ++i) {
+        ans = mul(ans,N-i);
+    }
+    for (int i = 0; i < M; ++i) {
+        ans = mul(ans,M-i);
+    }
+
+    if(N == M){
+        ans = mul(ans,2);
+    }
+
+    cout << ans << "\n";
 
     return 0;
 }
