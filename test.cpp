@@ -17,27 +17,37 @@ int main(){
     string s; cin >> s;
 
     string ans;
-
-    if (s == "WBWBWWBWBWBWWBWBWWBW") { // WBWBWWBWBWBW
+    switch (s) {
+    case "WBWBWWBWBWBWWBWBWWBW": {
         ans = "Do";
+        break;
     }
-    else if (s == "WBWWBWBWBWWBWBWWBWBW") {
+    case "WBWWBWBWBWWBWBWWBWWB": {
         ans = "Re";
+        break;
     }
-    else if (s == "WWBWBWBWWBWBWWBWBWBW") {
+    case "WWBWBWBWWBWBWWBWWBWB": {
         ans = "Mi";
+        break;
     }
-    else if (s == "WBWBWBWWBWBWWBWBWBWW") {
+    case "WBWBWBWWBWBWWBWWBWBW": {
         ans = "Fa";
+        break;
     }
-    else if (s == "WBWBWWBWBWWBWBWBWWBW") {
+    case "WBWBWWBWBWWBWWBWBWWB": {
         ans = "So";
+        break;
     }
-    else if (s == "WBWWBWBWWBWBWBWWBWBW") {
-        ans = "La";
+    case "WBWWBWBWWBWWBWBWWBWB": {
+        ans = "Ra";
+        break;
     }
-    else if (s == "WWBWBWWBWBWBWWBWBWWB") {
+    case "WWBWBWWBWWBWBWWBWBWB": {
         ans = "Si";
+        break;
+    }
+    default:
+        break;
     }
 
     cout << ans << "\n";

@@ -56,12 +56,11 @@ int main(){
     water.erase(unique(water.begin(), water.end()), water.end());
     sugar.erase(unique(sugar.begin(), sugar.end()), sugar.end());
 
-    // あり得る砂糖の量を列挙
     double max_con = 0;
-    int max_w,max_s;
+    int max_w, max_s;
     for(auto & w: water){
         for (auto & s: sugar){
-            if (w+s <= F && (double) s/(w+s) <= (double) E/(100+E) && max_con < (double) s/(w+s)){
+            if (w+s <= F && (double) s/(w+s) <= (double) E/(100+E) && max_con <= (double) s/(w+s)){
                 max_con = (double) s/(w+s);
                 max_w = w;
                 max_s = s;

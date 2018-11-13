@@ -32,37 +32,13 @@ int main(){
     }
 
     sort(A.begin(),A.end());
-    sort(B.begin(),B.end());
     sort(C.begin(),C.end());
-
-    int AB[100000] = {};
-    int j = 0;
-    for (int i = 0; i < N; ++i) {
-        while(j < N){
-            if(B[i] > A[j]){
-                AB[i]++;
-                j++;
-            }else {
-                break;
-            }
-        }
-        AB[i+1] = AB[i];
-    }
-
-    j = 0;
-    int CB[100000] = {};
-    for (int i = 0; i < N; ++i) {
-        while(j < N){
-            if(B[i] < C[j]){
-                CB[i] = N - j;
-                break;
-            }else j++;
-        }
-    }
 
     ll ans = 0;
     for (int i = 0; i < N; ++i) {
-        ans += CB[i] * AB[i];
+        ll l = lower_bound(A.begin(), A.end(), B[i]) - A.begin();
+        ll r = C.end() - upper_bound(C.begin(), C.end(), B[i]);
+        ans += l*r;
     }
 
     cout << ans << "\n";
