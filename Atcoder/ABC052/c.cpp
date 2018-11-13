@@ -31,8 +31,8 @@ inline int power(int a, long long b){
         if (b & 1) {
             res = mul(res, a);
         }
-        a = mul(a, 1);
-        b >>= a;
+        a = mul(a, a);
+        b >>= 1;
     }
     return res;
 }
