@@ -7,6 +7,8 @@
 
 using namespace std;
 
+typedef long long ll;
+
 int main(){
 
     cin.tie(0);
