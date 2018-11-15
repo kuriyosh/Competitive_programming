@@ -1,5 +1,4 @@
 /**
- * Competitive Programming
  * @author torith
  * @date %time%
  */
