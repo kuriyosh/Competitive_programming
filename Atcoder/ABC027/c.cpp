@@ -14,24 +14,39 @@ int main(){
     cin.tie(0);
     ios::sync_with_stdio(false);
     ll N; cin >> N;
-    if(N == 1){
-        cout << "Aoki" << "\n";
-        return 0;
-    }else if (N == 2) {
-        cout << "Takahashi" << "\n";
-        return 0;
+    ll tmp = N;
+    int height = 0;
+
+    while(tmp != 1) {
+        height++; tmp /= 2;
     }
 
-    ll a = N / 2 + 1;
-    int cnt = 0;
-    while (a != 1) {
-        if(a % 2 == 0) a = a / 2;
-        else a = a / 2 + 1;
-        cnt ++;
+    ll sum = 1;
+    bool isTakahashi = false;
+    if (height % 2 == 0) {
+        while (sum <= N) {
+            if(!isTakahashi){  // 高橋くんの番
+                sum = sum * 2 + 1;
+                isTakahashi = true;
+            }else{              // 青木くんの番
+                sum = sum * 2;
+                isTakahashi = false;
+            }
+        }
+    }else{
+        while (sum <= N) {
+            if(!isTakahashi){  // 高橋くんの番
+                sum = sum * 2 ;
+                isTakahashi = true;
+            }else{              // 青木くんの番
+                sum = sum * 2 + 1;
+                isTakahashi = false;
+            }
+        }
     }
 
-    if(cnt % 2 == 0) cout << "Aoki" << "\n";
-    else cout << "Takahashi" << "\n";
+    if(!isTakahashi) cout << "Takahashi" << "\n";
+    else cout << "Aoki" << "\n";
 
     return 0;
 }
