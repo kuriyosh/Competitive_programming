@@ -1,0 +1,26 @@
+#+TITLE: 競技プログラミングメモ
+#+AUTHOR: Torith
+#+DATE: 2018-12-25
+#+LANGUAGE: ja
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+#+HTML_HEAD: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+#+HTML_HEAD: <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+#+OPTIONS: \n:t
+
+* 全般
+** 配列の初期化                                                :配列:初期化:
+   以下の書式がスマートで良い
+   ちなみに、memsetはバイト単位で値設定を行うのでcharの初期化しか基本無理
+   無理やりintもできるけど特定の値しか無理なので素直にfill使うべし
+   #+BEGIN_SRC c++
+   // 配列xを4で初期化
+   int x[100];
+   fill(x, x + 100, 4);
+
+   // std::vector Xを3で初期化
+   std::vector<int> X;
+   fill(x.begin(), x.end(), 3);
+   #+END_SRC

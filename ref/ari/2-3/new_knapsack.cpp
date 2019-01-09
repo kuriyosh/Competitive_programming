@@ -1,7 +1,7 @@
 /**
  * @author torith
  * @date 2018-12-21
- * 01ナップサック問題その2
+ * p.60 01ナップサック問題その2
  */
 
 #include <bits/stdc++.h>
@@ -28,7 +28,9 @@ int main(){
     int W; cin >> W;
 
     // 無限で初期化する処理が必要
-    
+    fill(dp[0], dp[0] + 10000 * 100 + 1, 1e9);
+    dp[0][0] = 0;
+
     // 基本的な knapsack 問題の2次元目をvalueにして、
     // i番目までの品物を使って合計をsumにするために必要な、weightの最小を求める問題にする。
     for (int i = 1; i <= N; ++i) {
@@ -41,7 +43,7 @@ int main(){
     int ans = 0;
     for (int i = sum_value; i > 0; --i) {
         if(dp[N][i] != 0 && dp[N][i] <= W) {
-            ans = dp[N][i];
+            ans = i;
             break;
         }
     }

@@ -28,7 +28,7 @@ int main(){
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j <= W; ++j) {
             if(j >= w[i]){
-                dpA[i+1][j] = max(dpA[i][j], dpA[i][j - w[i]] + v[i]); // ここが違うだけ
+                dpA[i+1][j] = max(dpA[i][j], dpA[i][j - w[i]] + v[i]);
             }else{
                 dpA[i+1][j] = dpA[i][j];
             }
@@ -39,6 +39,10 @@ int main(){
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j <= W; ++j) {
             if(j >= w[i]){
+                /*
+                  ここが違う
+                  単に、(i+1,j)の更新にi+1番目までの品物までが既に入ってるケースも考慮する必要があるので(i+1,j-w[i])を用いる
+                 */
                 dpB[i+1][j] = max(dpB[i][j], dpB[i+1][j - w[i]] + v[i]);
             }else{
                 dpB[i+1][j] = dpB[i][j];
