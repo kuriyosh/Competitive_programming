@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2019-01-10 Thu 16:21 -->
+<!-- 2019-01-29 Tue 10:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>競技プログラミングメモ</title>
@@ -180,12 +180,13 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<style>pre.src{background:#343131;color:white;} </style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -240,21 +241,26 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org104a337">1. 全般</a>
+<li><a href="#org1ff5f93">1. 全般</a>
 <ul>
-<li><a href="#orgddc902a">1.1. 配列の初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></a></li>
+<li><a href="#org863643b">1.1. 配列の初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org3710836">2. 累積和</a>
+<ul>
+<li><a href="#org6927ec7">2.1. いもす法&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">累積和</span></span></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org104a337" class="outline-2">
-<h2 id="org104a337"><span class="section-number-2">1</span> 全般</h2>
+<div id="outline-container-org1ff5f93" class="outline-2">
+<h2 id="org1ff5f93"><span class="section-number-2">1</span> 全般</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgddc902a" class="outline-3">
-<h3 id="orgddc902a"><span class="section-number-3">1.1</span> 配列の初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></h3>
+<div id="outline-container-org863643b" class="outline-3">
+<h3 id="org863643b"><span class="section-number-3">1.1</span> 配列の初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 以下の書式がスマートで良い<br />
@@ -262,13 +268,45 @@ for the JavaScript code in this tag.
 無理やりintもできるけど特定の値しか無理なので素直にfill使うべし<br />
 </p>
 <div class="org-src-container">
-<pre class="src src-c++"><span style="color: #998f84;">// </span><span style="color: #998f84;">&#37197;&#21015;x&#12434;4&#12391;&#21021;&#26399;&#21270;</span>
-<span style="color: #ff9eb8;">int</span> <span style="color: #ffa724;">x</span>[100];
-fill(x, x + 100, 4);
+<pre class="src src-c++"><span style="color: #6272a4;">// </span><span style="color: #6272a4;">&#37197;&#21015;x&#12434;4&#12391;&#21021;&#26399;&#21270;</span>
+<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">x</span>[<span style="color: #8be9fd;">100</span>];
+fill(x, x + <span style="color: #8be9fd;">100</span>, <span style="color: #8be9fd;">4</span>);
 
-<span style="color: #998f84;">// </span><span style="color: #998f84;">std::vector X&#12434;3&#12391;&#21021;&#26399;&#21270;</span>
-<span style="color: #b88853;">std</span>::<span style="color: #ff9eb8;">vector</span>&lt;<span style="color: #ff9eb8;">int</span>&gt; <span style="color: #ffa724;">X</span>;
-fill(x.begin(), x.end(), 3);
+<span style="color: #6272a4;">// </span><span style="color: #6272a4;">std::vector X&#12434;3&#12391;&#21021;&#26399;&#21270;</span>
+<span style="color: #8be9fd;">std</span>::<span style="color: #bd93f9;">vector</span>&lt;<span style="color: #bd93f9;">int</span>&gt; <span style="color: #f8f8f2;">X</span>;
+fill(x.begin(), x.end(), <span style="color: #8be9fd;">3</span>);
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3710836" class="outline-2">
+<h2 id="org3710836"><span class="section-number-2">2</span> 累積和</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org6927ec7" class="outline-3">
+<h3 id="org6927ec7"><span class="section-number-3">2.1</span> いもす法&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">累積和</span></span></h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+重みを持つ複数の区間の重なりを配列を用いて表現した時に全区間の重みの重なりを O(要素の個数) で求めるアルゴリズム<br />
+全体の区間[0, 100]とし、それを配列a[100]で表現するとした時、区間[l, r](0 &lt; l &lt; r &lt; 100) 重みwの区間を配列aに下記のように表現する。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-c++">a[l] += w
+a[r+<span style="color: #8be9fd;">1</span>] -= w
+</pre>
+</div>
+<p>
+一般的な区間[l,r]に同様の操作を行い、全ての要素を追加下後に以下の操作で全区間の重みの重なりを取得する。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">sum</span> = <span style="color: #8be9fd;">0</span>;
+<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">ans</span>[<span style="color: #8be9fd;">100</span>];                    <span style="color: #6272a4;">// </span><span style="color: #6272a4;">&#27714;&#12417;&#12383;&#12356;&#37197;&#21015;&#12434;&#26684;&#32013;&#12377;&#12427;</span>
+<span style="color: #ff79c6; font-weight: bold;">for</span> (<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">i</span> = <span style="color: #8be9fd;">0</span>; i &lt; <span style="color: #8be9fd;">100</span>; i++) {
+    sum += a[i];
+    ans[i] = sum;
+}
 </pre>
 </div>
 </div>
@@ -276,9 +314,8 @@ fill(x.begin(), x.end(), 3);
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">&#26085;&#20184;: 2018-12-25</p>
 <p class="author">&#33879;&#32773;: Torith</p>
-<p class="date">Created: 2019-01-10 Thu 16:21</p>
+<p class="date">Created: 2019-01-29 Tue 10:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
