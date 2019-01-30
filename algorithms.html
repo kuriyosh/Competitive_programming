@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2019-01-29 Tue 10:11 -->
+<!-- 2019-01-31 Thu 01:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>競技プログラミングメモ</title>
@@ -241,26 +241,33 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1ff5f93">1. 全般</a>
+<li><a href="#orgcb373e2">1. 全般</a>
 <ul>
-<li><a href="#org863643b">1.1. 配列の初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></a></li>
+<li><a href="#org32af730">1.1. 1次元配列のスマートな初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></a></li>
+<li><a href="#org8acbcc0">1.2. 二次元vector&lt;pair&lt;int, int&gt;&gt;を初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></a></li>
+<li><a href="#org97b6384">1.3. 10<sup>9</sup> + 1の余り</a></li>
 </ul>
 </li>
-<li><a href="#org3710836">2. 累積和</a>
+<li><a href="#org3d9874a">2. 累積和</a>
 <ul>
-<li><a href="#org6927ec7">2.1. いもす法&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">累積和</span></span></a></li>
+<li><a href="#orgdec6123">2.1. いもす法&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">累積和</span></span></a></li>
+</ul>
+</li>
+<li><a href="#orgde50a1c">3. 探索</a>
+<ul>
+<li><a href="#org8f67bf4">3.1. 組み合わせの探索&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_____">組み合わせ</span>&#xa0;<span class="__">列挙</span></span></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1ff5f93" class="outline-2">
-<h2 id="org1ff5f93"><span class="section-number-2">1</span> 全般</h2>
+<div id="outline-container-orgcb373e2" class="outline-2">
+<h2 id="orgcb373e2"><span class="section-number-2">1</span> 全般</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org863643b" class="outline-3">
-<h3 id="org863643b"><span class="section-number-3">1.1</span> 配列の初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></h3>
+<div id="outline-container-org32af730" class="outline-3">
+<h3 id="org32af730"><span class="section-number-3">1.1</span> 1次元配列のスマートな初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 以下の書式がスマートで良い<br />
@@ -279,14 +286,68 @@ fill(x.begin(), x.end(), <span style="color: #8be9fd;">3</span>);
 </div>
 </div>
 </div>
+<div id="outline-container-org8acbcc0" class="outline-3">
+<h3 id="org8acbcc0"><span class="section-number-3">1.2</span> 二次元vector&lt;pair&lt;int, int&gt;&gt;を初期化&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">初期化</span></span></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+pair&lt;int,int&gt;の要素数R*Cの二次元配列pair<sub>vecを</sub>(0,0)で初期化<br />
+結構思い出せないので注意<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #bd93f9;">vector</span>&lt;<span style="color: #bd93f9;">vector</span>&lt;<span style="color: #bd93f9;">pair</span>&lt;<span style="color: #bd93f9;">int</span>,<span style="color: #bd93f9;">int</span>&gt; &gt; &gt; <span style="color: #50fa7b; font-weight: bold;">pair_vec</span>(R, vector&lt;<span style="color: #bd93f9;">pair</span>&lt;<span style="color: #bd93f9;">int</span>, <span style="color: #bd93f9;">int</span>&gt; &gt;(C, make_pair(<span style="color: #8be9fd;">0</span>,<span style="color: #8be9fd;">0</span>)));
+</pre>
 </div>
+</div>
+</div>
+<div id="outline-container-org97b6384" class="outline-3">
+<h3 id="org97b6384"><span class="section-number-3">1.3</span> 10<sup>9</sup> + 1の余り</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+ただ、書くだけなので特に解説なし。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #ff79c6; font-weight: bold;">const</span> <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">md</span> = (<span style="color: #bd93f9;">int</span>) <span style="color: #8be9fd;">1e9</span> + <span style="color: #8be9fd;">7</span>;
 
-<div id="outline-container-org3710836" class="outline-2">
-<h2 id="org3710836"><span class="section-number-2">2</span> 累積和</h2>
+ <span style="color: #ff79c6; font-weight: bold;">inline</span> <span style="color: #bd93f9;">void</span> <span style="color: #50fa7b; font-weight: bold;">add</span>(<span style="color: #bd93f9;">int</span> &amp;<span style="color: #f8f8f2;">a</span>, <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">b</span>){
+     a += b;
+     <span style="color: #ff79c6; font-weight: bold;">if</span> (a &gt;= md) a -= md;
+ }
+
+ <span style="color: #ff79c6; font-weight: bold;">inline</span> <span style="color: #bd93f9;">void</span> <span style="color: #50fa7b; font-weight: bold;">sub</span>(<span style="color: #bd93f9;">int</span> &amp;<span style="color: #f8f8f2;">a</span>, <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">b</span>){
+     a -= b;
+     <span style="color: #ff79c6; font-weight: bold;">if</span> (a &lt; <span style="color: #8be9fd;">0</span>) a += md;
+ }
+
+ <span style="color: #ff79c6; font-weight: bold;">inline</span> <span style="color: #bd93f9;">int</span> <span style="color: #50fa7b; font-weight: bold;">mul</span>(<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">a</span>, <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">b</span>){
+     <span style="color: #ff79c6; font-weight: bold;">return</span> (<span style="color: #bd93f9;">int</span>) ((<span style="color: #bd93f9;">ll</span>) a * b % md);
+ }
+
+ <span style="color: #ff79c6; font-weight: bold;">inline</span> <span style="color: #bd93f9;">int</span> <span style="color: #50fa7b; font-weight: bold;">power</span>(<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">a</span>, <span style="color: #bd93f9;">long</span> <span style="color: #bd93f9;">long</span> <span style="color: #f8f8f2;">b</span>){
+     <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">res</span> = <span style="color: #8be9fd;">1</span>;
+     <span style="color: #ff79c6; font-weight: bold;">while</span> (b &gt; <span style="color: #8be9fd;">0</span>) {
+         <span style="color: #ff79c6; font-weight: bold;">if</span> (b &amp; <span style="color: #8be9fd;">1</span>) {
+             res = mul(res, a);
+         }
+         a = mul(a, a);
+         b &gt;&gt;= <span style="color: #8be9fd;">1</span>;
+     }
+     <span style="color: #ff79c6; font-weight: bold;">return</span> res;
+ }
+
+ <span style="color: #ff79c6; font-weight: bold;">inline</span> <span style="color: #bd93f9;">int</span> <span style="color: #50fa7b; font-weight: bold;">dive</span>(<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">a</span>, <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">b</span>){
+     <span style="color: #ff79c6; font-weight: bold;">return</span> mul(a, power(b, md - <span style="color: #8be9fd;">2</span>));
+ }
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org3d9874a" class="outline-2">
+<h2 id="org3d9874a"><span class="section-number-2">2</span> 累積和</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org6927ec7" class="outline-3">
-<h3 id="org6927ec7"><span class="section-number-3">2.1</span> いもす法&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">累積和</span></span></h3>
+<div id="outline-container-orgdec6123" class="outline-3">
+<h3 id="orgdec6123"><span class="section-number-3">2.1</span> いもす法&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">配列</span>&#xa0;<span class="___">累積和</span></span></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 重みを持つ複数の区間の重なりを配列を用いて表現した時に全区間の重みの重なりを O(要素の個数) で求めるアルゴリズム<br />
@@ -312,10 +373,40 @@ a[r+<span style="color: #8be9fd;">1</span>] -= w
 </div>
 </div>
 </div>
+<div id="outline-container-orgde50a1c" class="outline-2">
+<h2 id="orgde50a1c"><span class="section-number-2">3</span> 探索</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org8f67bf4" class="outline-3">
+<h3 id="org8f67bf4"><span class="section-number-3">3.1</span> 組み合わせの探索&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_____">組み合わせ</span>&#xa0;<span class="__">列挙</span></span></h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+組み合わせの候補が入ってる配列をAとする。<br />
+(Aのサイズ)<sup>2</sup> をfor文でループした時のインデックスをiとする。<br />
+iの内、右からn番目のビットが1の時、A[i]を組み合わせとしてとる。<br />
+上記の操作をfor文の探索空間全て行えば全ての組み合わせを列挙可能。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #ff79c6; font-weight: bold;">for</span> (<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">i</span> = <span style="color: #8be9fd;">0</span>; i &lt; pow(<span style="color: #8be9fd;">2</span>, A.size); ++i) {
+     <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">base</span> = i;
+     <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2;">n</span> = <span style="color: #8be9fd;">0</span>;
+     <span style="color: #ff79c6; font-weight: bold;">while</span>(base != <span style="color: #8be9fd;">0</span>){
+         <span style="color: #ff79c6; font-weight: bold;">if</span>(base &amp; <span style="color: #8be9fd;">1</span>) {
+             <span style="color: #6272a4;">// </span><span style="color: #6272a4;">&#12371;&#12398;&#26178;&#12289;n&#30058;&#30446;&#12398;&#35201;&#32032;&#12434;&#25342;&#12358;</span>
+         }
+         base &gt;&gt; <span style="color: #8be9fd;">1</span>;
+         n++;
+     }
+ }
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Torith</p>
-<p class="date">Created: 2019-01-29 Tue 10:11</p>
+<p class="date">Created: 2019-01-31 Thu 01:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

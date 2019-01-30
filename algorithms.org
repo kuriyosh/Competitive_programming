@@ -6,7 +6,7 @@
 #+OPTIONS: \n:t
 
 * 全般
-** 配列の初期化                                                :配列:初期化:
+** 1次元配列のスマートな初期化                                 :配列:初期化:
    以下の書式がスマートで良い
    ちなみに、memsetはバイト単位で値設定を行うのでcharの初期化しか基本無理
    無理やりintもできるけど特定の値しか無理なので素直にfill使うべし
@@ -19,7 +19,47 @@
    std::vector<int> X;
    fill(x.begin(), x.end(), 3);
    #+END_SRC
+** 二次元vector<pair<int, int>>を初期化                        :配列:初期化:
+   pair<int,int>の要素数R*Cの二次元配列pair_vecを(0,0)で初期化
+   結構思い出せないので注意
+   #+BEGIN_SRC c++
+   vector<vector<pair<int,int> > > pair_vec(R, vector<pair<int, int> >(C, make_pair(0,0)));
+   #+END_SRC
+** 10^9 + 1の余り
+   ただ、書くだけなので特に解説なし。
+   #+BEGIN_SRC c++
+   const int md = (int) 1e9 + 7;
 
+	inline void add(int &a, int b){
+	    a += b;
+	    if (a >= md) a -= md;
+	}
+	
+	inline void sub(int &a, int b){
+	    a -= b;
+	    if (a < 0) a += md;
+	}
+	
+	inline int mul(int a, int b){
+	    return (int) ((ll) a * b % md);
+	}
+	
+	inline int power(int a, long long b){
+	    int res = 1;
+	    while (b > 0) {
+	        if (b & 1) {
+	            res = mul(res, a);
+	        }
+	        a = mul(a, a);
+	        b >>= 1;
+	    }
+	    return res;
+	}
+	
+	inline int dive(int a, int b){
+	    return mul(a, power(b, md - 2));
+	}
+   #+END_SRC
 * 累積和
 ** いもす法                                                    :配列:累積和:
    重みを持つ複数の区間の重なりを配列を用いて表現した時に全区間の重みの重なりを O(要素の個数) で求めるアルゴリズム
@@ -37,3 +77,23 @@
 		 ans[i] = sum;
 	 }
    #+END_SRC
+* 探索
+** 組み合わせの探索                                        :組み合わせ:列挙:
+   組み合わせの候補が入ってる配列をAとする。
+   (Aのサイズ)^2 をfor文でループした時のインデックスをiとする。
+   iの内、右からn番目のビットが1の時、A[i]を組み合わせとしてとる。
+   上記の操作をfor文の探索空間全て行えば全ての組み合わせを列挙可能。
+   #+BEGIN_SRC c++
+   for (int i = 0; i < pow(2, A.size); ++i) {
+        int base = i;
+        int n = 0;
+        while(base != 0){
+            if(base & 1) {
+                // この時、n番目の要素を拾う
+            }
+            base >>= 1;
+            n++;
+        }
+    }
+   #+END_SRC
+
