@@ -4,6 +4,7 @@
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+HTML_HEAD: <style>pre.src{background:#343131;color:white;} </style>
 #+OPTIONS: \n:t
+#+OPTIONS: ^:{}
 
 * 全般
 ** 1次元配列のスマートな初期化                                 :配列:初期化:
@@ -23,9 +24,9 @@
    pair<int,int>の要素数R*Cの二次元配列pair_vecを(0,0)で初期化
    結構思い出せないので注意
    #+BEGIN_SRC c++
-   vector<vector<pair<int,int> > > pair_vec(R, vector<pair<int, int> >(C, make_pair(0,0)));
+   vector<vector<pair<int,int>>> pair_vec(R, vector<pair<int, int>>(C, make_pair(0,0)));
    #+END_SRC
-** 10^9 + 1の余り
+** 10^{9} + 1の余り                                           :余り:10e9足7:
    ただ、書くだけなので特に解説なし。
    #+BEGIN_SRC c++
    const int md = (int) 1e9 + 7;
@@ -60,6 +61,28 @@
 	    return mul(a, power(b, md - 2));
 	}
    #+END_SRC
+** 逆順ソート                                                  :ソート:逆順:
+   標準ライブラリのsortの第3引数に標準ライブラリのgreaterクラスを代入すればOK
+   以下は、std::vector<int> Aを降順ソートするコード
+   #+BEGIN_SRC c++
+   sort(A.begin(), A.end(), greater<int>());
+   #+END_SRC
+** intの範囲を超えるpow                                       :longlong:pow:
+   特に解説なし
+   #+BEGIN_SRC c++
+	ll power(ll a, ll r) {
+	    ll sum = 1;
+	    while (r > 0) {
+	        if ((r & 1) == 1) {
+	            sum *= a;
+	        }
+	        a *= a;
+	        r >>= 1;
+	    }
+	    return sum;
+	}
+   #+END_SRC
+
 * 累積和
 ** いもす法                                                    :配列:累積和:
    重みを持つ複数の区間の重なりを配列を用いて表現した時に全区間の重みの重なりを O(要素の個数) で求めるアルゴリズム
@@ -80,7 +103,7 @@
 * 探索
 ** 組み合わせの探索                                        :組み合わせ:列挙:
    組み合わせの候補が入ってる配列をAとする。
-   (Aのサイズ)^2 をfor文でループした時のインデックスをiとする。
+   (Aのサイズ)^{2} をfor文でループした時のインデックスをiとする。
    iの内、右からn番目のビットが1の時、A[i]を組み合わせとしてとる。
    上記の操作をfor文の探索空間全て行えば全ての組み合わせを列挙可能。
    #+BEGIN_SRC c++
