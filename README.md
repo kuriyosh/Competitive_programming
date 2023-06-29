@@ -1,5 +1,15 @@
 # Competitive Programming Repository
 
 ## 目標
-   ABC40くらいまでの問題に対し、C問題とD問題を埋める
-   年内に茶色を脱出する
+
+- とりあえず水色
+- Rust で書く
+
+## URL
+
+- [Atcoder](https://atcoder.jp/users/yosyos36)
+- [Atcoder Problems](https://kenkoooo.com/atcoder/#/table/yosyos36)
+
+## TODO
+
+- 今後 [cargo-complete](https://github.com/qryxip/cargo-compete/tree/master) を導入したい

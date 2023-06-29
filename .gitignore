@@ -1,6 +1,7 @@
 # 実行ファイルを常に無視
 *.out
 *~
+target
 
 # Emacs
 *~
@@ -8,6 +9,8 @@
 \#*
 .dir-locals.el
 
-
 # その他のデータファイル
 rival.org
+
+# macOS
+.DS_Store
