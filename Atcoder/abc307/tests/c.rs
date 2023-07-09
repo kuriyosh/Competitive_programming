@@ -15,10 +15,68 @@ fn test_runner(input: &str, expected: &str) {
 
 #[test]
 fn sample1() {
-    test_runner(r"", "\n")
+    test_runner(
+        r"3 5
+    #.#..
+    .....
+    .#...
+    2 2
+    #.
+    .#
+    5 3
+    ...
+    #.#
+    .#.
+    .#.
+    ...",
+        "Yes\n",
+    )
 }
 
 #[test]
 fn sample2() {
-    test_runner(r"", "\n")
+    test_runner(
+        r"2 2
+    #.
+    .#
+    2 2
+    #.
+    .#
+    2 2
+    ##
+    ##",
+        "No\n",
+    )
+}
+
+#[test]
+fn sample3() {
+    test_runner(
+        r"1 1
+        #
+        1 2
+        ##
+        1 1
+        #",
+        "No\n",
+    )
+}
+
+#[test]
+fn sample4() {
+    test_runner(
+        r"3 3
+        ###
+        ...
+        ...
+        3 3
+        #..
+        #..
+        #..
+        3 3
+        ..#
+        ..#
+        ###",
+        "Yes\n",
+    )
 }

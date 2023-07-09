@@ -15,10 +15,36 @@ fn test_runner(input: &str, expected: &str) {
 
 #[test]
 fn sample1() {
-    test_runner(r"", "\n")
+    test_runner(
+        r"8
+    a(b(d))c",
+        "ac\n",
+    )
 }
 
 #[test]
 fn sample2() {
-    test_runner(r"", "\n")
+    test_runner(
+        r"5
+    a(b)(",
+        "a(\n",
+    )
+}
+
+#[test]
+fn sample3() {
+    test_runner(
+        r"2
+    ()",
+        "\n",
+    )
+}
+
+#[test]
+fn sample4() {
+    test_runner(
+        r"6
+    )))(((",
+        ")))(((\n",
+    )
 }
