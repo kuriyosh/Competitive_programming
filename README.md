@@ -7,8 +7,8 @@
 
 ## URL
 
-- [Atcoder](https://atcoder.jp/users/yosyos36)
-- [Atcoder Problems](https://kenkoooo.com/atcoder/#/table/yosyos36)
+- [Atcoder](https://atcoder.jp/users/kuriyosh)
+- [Atcoder Problems](https://kenkoooo.com/atcoder/#/table/kuriyosh)
 
 ## TODO
 
